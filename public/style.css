@@ -14,17 +14,17 @@
     align-items: center;
 } */
  body {
-   background-color: #E8F0FF;
+   background-color: #F7ACCF;
  }
 
  .todo-list {
-   background-color: #F7ACCF;
+   background-color: #E8F0FF;
    margin: auto;
    width: 40%;
    display: flex;
    flex-direction: column;
    align-items: center;
-   border: 2px solid #D9BBF9;
+   border: 1px solid #D9BBF9;
    box-shadow:
        0 1px 1px rgba(0,0,0,0.15),
        0 10px 0 -5px #eee,
