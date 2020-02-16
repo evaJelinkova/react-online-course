@@ -3,20 +3,29 @@
 // import ToDoItem from "./ToDoItem"
 // import todosData from "./todosData"
 
-// function App() {
-//   const todoItems = todosData.map(item => <ToDoItem key={item.id} item={item} />)
+// class App extends React.Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       todos: todosData
+//     }
+//   }
 
-//   return (
-//     <div className="todo-list">
-//       {todoItems}
+//   render() {
+//     const todoItems = this.state.todos.map(item => <ToDoItem key={item.id} item={item} />)
 
-//     </div>
+//     return (
+//       <div className="todo-list">
+//         {todoItems}
+//       </div>
 //   )
+//   }
+  
 // }
 
 // export default App
 
-
+// ------------date change--------------
 // import React from "react"
 
 
@@ -36,7 +45,7 @@
 // export default App
 
 
-
+// -------------------class based componets and state-----------
 
 // import React from "react"
 
@@ -60,29 +69,117 @@
 
 // export default App
 
+// -----------class components------------
 
-import React, {Component} from "react"
+// import React, {Component} from "react"
 
-class App extends Component {
+// class App extends Component {
+//   constructor() {
+//   super() 
+//     this.state = {
+//       name: "eva",
+//       age: 25
+//     }
+//   }
+//     render() {
+//   return (
+//     <div>
+//       <h1>{this.state.name}</h1>
+//       <h3>{this.state.age} years old</h3>
+//     </div>
+//     )
+//   }
+// }
+// export default App
+
+
+// ----------class component, boolean-------
+
+
+// import React, {Component} from "react"
+
+// class App extends Component {
+//   constructor() {
+//     super() 
+//     this.state = {
+//       isLoggedIn: false
+//     }
+//   }
+//     render() {
+//       let wordDisplay
+//       if (this.state.isLoggedIn) {
+//         wordDisplay = "in"
+//       } else {
+//         wordDisplay = "out"
+//       }
+//       return(
+//         <div>
+//           <h1>you are currently logged {wordDisplay}</h1>
+//         </div>
+//       ) 
+
+      
+//     }
+//   }
+
+
+// export default App
+
+
+// --------------events------------
+
+// import React from "react"
+
+// function handleClick() {
+//   console.log("I was clicked")
+// }
+
+
+// function App() {
+//   return (
+//     <div> 
+//       <img onMouseOver={() => console.log("Hovered!")}
+//       src="https://www.fillmurray.com/200/200" />
+//       <br />
+//       <br />
+//       <button onClick={handleClick}>Click me</button>
+//     </div>
+//   )
+// }
+// export default App
+
+
+// -------------componentst change in state---------------
+
+import React from "react"
+
+class App extends React.Component {
   constructor() {
-  super() 
+    super()
     this.state = {
-      name: "eva",
-      age: 25
+      count: 0
     }
+    this.handleClick = this.handleClick.bind(this)
   }
-    render() {
-  return (
-    <div>
-      <h1>{this.state.name}</h1>
-      <h3>{this.state.age} years old</h3>
-    </div>
-  )
-    }
 
+  handleClick() {
+    this.setState(prevState => {
+      return {
+        count: prevState.count + 1 * 3
+      }
+
+    })
+  }
+
+  render() {
+    return (
+      <div className="counting">
+        <h1>{this.state.count}</h1>
+        <button onClick={this.handleClick}>Change!</button>
+        {/* <ChildComponent count={this.state.count}/> -----------will react to change in state and render every time--- */}
+      </div>
+    )
+
+  }
 }
-
 export default App
-
-
-
