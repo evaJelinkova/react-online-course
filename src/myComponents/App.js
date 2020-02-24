@@ -9,16 +9,31 @@
 //     this.state = {
 //       todos: todosData
 //     }
+//     this.handleChange = this.handleChange.bind(this)
+//   }
+
+//   handleChange(id) {
+//     this.setState(prevState => {
+//       const updatedTodos = prevState.todos.map(todo => {
+//         if (todo.id === id) {
+//           todo.completed = !todo.completed
+//         }
+//         return todo
+//       })
+//       return {
+//         todos: updatedTodos
+//       }
+//     })
 //   }
 
 //   render() {
-//     const todoItems = this.state.todos.map(item => <ToDoItem key={item.id} item={item} />)
+//     const todoItems = this.state.todos.map(item => <ToDoItem key={item.id} item={item} handleChange={this.handleChange}/>)
 
 //     return (
 //       <div className="todo-list">
 //         {todoItems}
 //       </div>
-//   )
+//     )
 //   }
   
 // }
@@ -151,35 +166,121 @@
 
 // -------------componentst change in state---------------
 
-import React from "react"
+// import React from "react"
 
-class App extends React.Component {
+// class App extends React.Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       count: 0
+//     }
+//     this.handleClick = this.handleClick.bind(this)
+//   }
+
+//   handleClick() {
+//     this.setState(prevState => {
+//       return {
+//         count: prevState.count + 1 * 3
+//       }
+
+//     })
+//   }
+
+//   render() {
+//     return (
+//       <div className="counting">
+//         <h1>{this.state.count}</h1>
+//         <button onClick={this.handleClick}>Change!</button>
+//         {/* <ChildComponent count={this.state.count}/> -----------will react to change in state and render every time--- */}
+//       </div>
+//     )
+
+//   }
+// }
+// export default App
+
+
+
+// --------------------Lifecycle methods-------------
+
+// import React, {Component} from "react"
+// import { unstable_batchedUpdates } from "react-dom"
+
+
+// class App extends Component {
+//   constructor() {
+//   super()
+//   this.state = {}
+// }
+
+// componentDidMount() {
+
+// }
+
+// componentWillReceiveProps() {
+
+// }
+
+// shouldComponentUpdate(nextProps, nextState) {
+//   return true if we want to update
+//   return false if not
+// }
+
+// static getDerivedStateProps(props, state) {
+
+// }
+
+// getSnapshotBeforeUpdate() {
+
+// }
+
+// componentWillUnmount() {
+
+// }
+
+// render() {
+//   return (
+//     <div>
+//       Code goes here
+//     </div>
+//     ) 
+//   }
+// }
+
+// export default App
+
+
+// ------------------------Conditionaal rendering------------------
+
+import React, {Component} from "react"
+import Conditional from "./Conditional"
+import { render } from "@testing-library/react"
+
+class App extends Component {
   constructor() {
     super()
     this.state = {
-      count: 0
+      isLoading: true
     }
-    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick() {
-    this.setState(prevState => {
-      return {
-        count: prevState.count + 1 * 3
-      }
+  componentsDidMount() {
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
 
-    })
+      })
+    }, 1500)
   }
 
-  render() {
-    return (
-      <div className="counting">
-        <h1>{this.state.count}</h1>
-        <button onClick={this.handleClick}>Change!</button>
-        {/* <ChildComponent count={this.state.count}/> -----------will react to change in state and render every time--- */}
-      </div>
-    )
 
-  }
+render() {
+  return (
+    <div>
+      <Conditional isLoading={this.state.isLoading}/>
+    </div>
+  )
 }
+}
+
 export default App
