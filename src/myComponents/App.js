@@ -1,44 +1,44 @@
 
-// import React from "react"
-// import ToDoItem from "./ToDoItem"
-// import todosData from "./todosData"
+import React from "react"
+import ToDoItem from "./ToDoItem"
+import todosData from "./todosData"
 
-// class App extends React.Component {
-//   constructor() {
-//     super()
-//     this.state = {
-//       todos: todosData
-//     }
-//     this.handleChange = this.handleChange.bind(this)
-//   }
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      todos: todosData
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
 
-//   handleChange(id) {
-//     this.setState(prevState => {
-//       const updatedTodos = prevState.todos.map(todo => {
-//         if (todo.id === id) {
-//           todo.completed = !todo.completed
-//         }
-//         return todo
-//       })
-//       return {
-//         todos: updatedTodos
-//       }
-//     })
-//   }
+  handleChange(id) {
+    this.setState(prevState => {
+      const updatedTodos = prevState.todos.map(todo => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed
+        }
+        return todo
+      })
+      return {
+        todos: updatedTodos
+      }
+    })
+  }
 
-//   render() {
-//     const todoItems = this.state.todos.map(item => <ToDoItem key={item.id} item={item} handleChange={this.handleChange}/>)
+  render() {
+    const todoItems = this.state.todos.map(item => <ToDoItem key={item.id} item={item} handleChange={this.handleChange}/>)
 
-//     return (
-//       <div className="todo-list">
-//         {todoItems}
-//       </div>
-//     )
-//   }
+    return (
+      <div className="todo-list">
+        {todoItems}
+      </div>
+    )
+  }
   
-// }
+}
 
-// export default App
+export default App
 
 // ------------date change--------------
 // import React from "react"
@@ -252,35 +252,74 @@
 
 // ------------------------Conditionaal rendering------------------
 
-import React, {Component} from "react"
-import Conditional from "./Conditional"
-import { render } from "@testing-library/react"
+// import React, {Component} from "react"
+// import Conditional from "./Conditional"
+// // import { render } from "@testing-library/react"
 
-class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      isLoading: true
-    }
-  }
+// class App extends Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       isLoading: true
+//     }
+//   }
 
-  componentsDidMount() {
-    setTimeout(() => {
-      this.setState({
-        isLoading: false
+//   componentsDidMount() {
+//     setTimeout(() => {
+//       this.setState({
+//         isLoading: false
 
-      })
-    }, 1500)
-  }
+//       })
+//     }, 150)
+//   }
 
 
-render() {
-  return (
-    <div>
-      <Conditional isLoading={this.state.isLoading}/>
-    </div>
-  )
-}
-}
+// render() {
+//   return (
+//     <div>
+//       <Conditional isLoading={this.state.isLoading}/>
+//     </div>
+//     )
+//   }
+// }
 
-export default App
+// export default App
+
+
+// ----------logged in / out button excercise--------------
+
+// import React from "react"
+
+// class  App extends React.Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       isLoggedIn: false
+//     }
+//     this.handleClick = this.handleClick.bind(this)
+//   }
+
+// handleClick() {
+//   this.setState(prevState => {
+//     return {
+//        isLoggedIn: !prevState.isLoggedIn
+//     }
+//   })
+// }
+
+//   render() {
+//     let buttonText = this.state.isLoggedIn ? "LOG OUT" : "LOG IN"
+//     let displayText = this.state.isLoggedIn ? "Logged in" : "Logged out"
+//     return (
+//       <div>
+//         <button onClick={this.handleClick}>
+//           {buttonText}
+//         </button>
+//     <h1>{displayText}</h1>
+//       </div>
+//     )
+//   }
+  
+// }
+
+// export default App
