@@ -1,44 +1,44 @@
 
-import React from "react"
-import ToDoItem from "./ToDoItem"
-import todosData from "./todosData"
+// import React from "react"
+// import ToDoItem from "./ToDoItem"
+// import todosData from "./todosData"
 
-class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      todos: todosData
-    }
-    this.handleChange = this.handleChange.bind(this)
-  }
+// class App extends React.Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       todos: todosData
+//     }
+//     this.handleChange = this.handleChange.bind(this)
+//   }
 
-  handleChange(id) {
-    this.setState(prevState => {
-      const updatedTodos = prevState.todos.map(todo => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed
-        }
-        return todo
-      })
-      return {
-        todos: updatedTodos
-      }
-    })
-  }
+//   handleChange(id) {
+//     this.setState(prevState => {
+//       const updatedTodos = prevState.todos.map(todo => {
+//         if (todo.id === id) {
+//           todo.completed = !todo.completed
+//         }
+//         return todo
+//       })
+//       return {
+//         todos: updatedTodos
+//       }
+//     })
+//   }
 
-  render() {
-    const todoItems = this.state.todos.map(item => <ToDoItem key={item.id} item={item} handleChange={this.handleChange}/>)
+//   render() {
+//     const todoItems = this.state.todos.map(item => <ToDoItem key={item.id} item={item} handleChange={this.handleChange}/>)
 
-    return (
-      <div className="todo-list">
-        {todoItems}
-      </div>
-    )
-  }
+//     return (
+//       <div className="todo-list">
+//         {todoItems}
+//       </div>
+//     )
+//   }
   
-}
+// }
 
-export default App
+// export default App
 
 // ------------date change--------------
 // import React from "react"
@@ -323,3 +323,90 @@ export default App
 // }
 
 // export default App
+
+
+
+// ----------fetching data from API-------------------
+
+import React, {Component} from "react"
+
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      firstName: "",
+      lastName: "",
+      isFriendly: true
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(event) {
+    const {name, value, type, checked} = event.target
+    type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value
+    })
+  }
+
+  render() {
+    return (
+      <form>
+        <input 
+          type="text" 
+          value={this.state.firstName} 
+          name="firstName" placeholder="first name" 
+          onChange={this.handleChange} 
+        />
+
+        <br />
+
+        <input 
+          type="text" 
+          value={this.state.lastName} 
+          name="lastName" placeholder="last name" 
+          onChange={this.handleChange} 
+        />
+        
+        <textarea 
+          value={"some default value"} 
+          onChange={this.onChange}
+        />
+
+        <br/>
+
+        <label>
+          <input
+            type="checkbox"
+            name="isFriendly"
+            checked={this.state.isFriendly}
+            onChange={this.handleChange}
+          />is friendly?
+        </label>
+        <br/>
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="male"
+            checked={this.state.isFriendly}
+            onChange={this.handleChange}
+          />male
+        </label>
+        <br/>
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="female"
+            checked={this.state.isFriendly}
+            onChange={this.handleChange}
+          />female
+        </label>
+        
+
+        <h1>{this.state.firstName} {this.state.lastName}</h1>
+      </form>
+    )
+  }
+}
+
+export default App
